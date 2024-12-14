@@ -5,11 +5,15 @@ import { FlatList } from "react-native";
 export default function FeedScreen() {
   return (
     <FlatList
-    className="items-center"
       data={posts}
       renderItem={({ item }) => <PostList post={item} />}
       showsVerticalScrollIndicator={false}
-      contentContainerStyle={{ gap: 12,maxWidth:512,width:"100%" }}
+      contentContainerStyle={{
+        gap: 12,
+        maxWidth: 512,
+        width: "100%",
+        alignSelf: "center",
+      }}
     />
   );
 }
