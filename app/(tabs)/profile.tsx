@@ -12,8 +12,8 @@ import CustomButton from "../components/customButton";
 
 export default function Profile() {
   const [imageUri, setImageUri] = useState<string>();
-  const[username,SetUsername]=useState("")
-  const[email,setEmail]=useState("")
+  const [username, SetUsername] = useState("");
+  const [email, setEmail] = useState("");
   const handleChooseImage = async () => {
     if (Platform.OS === "web") {
       return;
@@ -49,22 +49,16 @@ export default function Profile() {
         value={email}
         onChangeText={setEmail}
       />
-       <TextInput
+      <TextInput
         placeholder="Type your username"
         returnKeyType="done"
         className="rounded-2xl w-96 p-3 bg-gray-200 text-lg"
-        value={username} onChangeText={SetUsername}
-
+        value={username}
+        onChangeText={SetUsername}
       />
-     {/*  <Pressable className="bg-blue-500 p-5 items-center mt-8 w-4/5 rounded-lg h-13">
-        <Text className="text-white text-lg">Update</Text>
-      </Pressable>
-      <Pressable className="bg-blue-500 p-5 items-center m-5 w-4/5 rounded-lg h-13">
-        <Text className="text-white text-lg">Sign out</Text>
-      </Pressable> */}
       <View className="gap-3 mt-auto w-full">
-      <CustomButton title="Update profile" />
-      <CustomButton title="Sign out"/>
+        <CustomButton title="Update profile" />
+        <CustomButton title="Sign out" />
       </View>
     </View>
   );
