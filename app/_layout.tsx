@@ -1,8 +1,6 @@
-import { Stack, Tabs } from "expo-router";
-
+import { Stack } from "expo-router";
+import "../global.css";
 
 export default function Layout() {
-  return (
-   <Stack screenOptions={{headerShown:false}}/>
-  );
+  return <Stack screenOptions={{ headerShown: false }} />;
 }
