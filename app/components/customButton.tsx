@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Pressable, Text } from "react-native";
 type ButtonProps = {
   title: string;

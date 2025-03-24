@@ -10,6 +10,7 @@ import {
 import * as ImagePicker from "expo-image-picker";
 import { useState } from "react";
 import CustomButton from "../components/customButton";
+import { supabase } from "../lib/supabase";
 
 export default function Profile() {
   const [imageUri, setImageUri] = useState<string>();
@@ -59,7 +60,7 @@ export default function Profile() {
       />
       <View className="gap-3 mt-auto w-full">
         <CustomButton title="Update profile" />
-        <CustomButton title="Sign out" />
+        <CustomButton title="Sign out" onPress={()=>supabase.auth.signOut()}/>
       </View>
     </View>
   );
