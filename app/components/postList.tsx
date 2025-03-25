@@ -14,7 +14,7 @@ export default function PostList({ post }) {
   const { width } = useWindowDimensions();
   const image = cld.image(post.image);
  image.resize(thumbnail().width(width).height(width));
-  const avatar = cld.image(post.user.avatar_url);
+  const avatar = cld.image(post.user.avatar_url || "default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3467_xpphyk");
   avatar.resize(
     thumbnail().width(48).height(48).gravity(focusOn(FocusOn.face())),
   );
@@ -25,7 +25,7 @@ export default function PostList({ post }) {
           cldImg={avatar}
           className="rounded-full w-12 aspect-square"
         />
-        <Text className="font-semibold">{post.user.username}</Text>
+        <Text className="font-semibold">{post.user.username || "New User"}</Text>
       </View>
       <AdvancedImage cldImg={image} className="w-full aspect-[4/3]" />
 
