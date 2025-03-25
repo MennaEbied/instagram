@@ -10,11 +10,15 @@ import {
 import * as ImagePicker from "expo-image-picker";
 import { useState, useEffect } from "react";
 import CustomButton from "../components/customButton";
-import {  uploadImage } from "../lib/cloudinary";
+import { uploadImage } from "../lib/cloudinary";
+import { supabase } from "../lib/supabase";
+import { useAuth } from "../provider/AuthProvider";
+import { router } from "expo-router";
 
 export default function NewScreen() {
   const [caption, setCaption] = useState("");
   const [image, setImage] = useState<string>();
+  const {session} = useAuth()
   useEffect(() => {
     if (!image) {
       handleChooseImage();
@@ -42,6 +46,12 @@ export default function NewScreen() {
     }
     const response = await uploadImage(image);
     console.log("image id", response?.public_id);
+
+    const { data, error } = await supabase
+      .from("posts")
+      .insert([{ caption, image: response?.public_id, user_id:session?.user.id }])
+      .select();
+      router.push('/(tabs)')
   };
   return (
     <View className=" flex-1 items-center p-4">
